@@ -1,8 +1,8 @@
 // Auto-detect API base: use config if set, otherwise fallback to localhost
-const API_BASE = window.REMOVEBG_API_BASE
+const API_BASE = (window.REMOVEBG_API_BASE
     || (location.hostname === 'localhost' || location.hostname === '127.0.0.1'
         ? 'http://localhost:8000'
-        : '');
+        : '')).replace(/\/+$/, '');
 const API_KEY = window.REMOVEBG_API_KEY || '';
 
 // Wrapper for fetch with auth header
