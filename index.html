@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RemoveBG - AI Background Removal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo" id="logoLink">
+            <i class="fas fa-magic"></i>
+            RemoveBG
+        </a>
+        <div class="nav-buttons">
+            <span style="color: var(--text-light); font-size: 0.85rem;">Powered by SAM3 + MLX</span>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <div id="landing">
+        <section class="hero">
+            <h1>Remove Image Background</h1>
+            <p>100% Local &amp; Free — Powered by <span class="badge">SAM3</span> on Apple Silicon</p>
+            <div class="upload-box" id="uploadBox">
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload Image
+                </button>
+                <p>or drag and drop an image here</p>
+                <small>Supports JPG, PNG, WebP</small>
+            </div>
+        </section>
+    </div>
+
+    <!-- Workspace (hidden by default) -->
+    <div id="workspace">
+        <div class="workspace-toolbar">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            <span class="file-name" id="fileName"></span>
+            <div></div>
+        </div>
+
+        <div class="workspace-main">
+            <!-- Canvas Area -->
+            <div class="canvas-area">
+                <canvas id="canvas"></canvas>
+                <canvas id="maskCanvas" style="display:none;"></canvas>
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="control-section">
+                    <h3>Text Prompt</h3>
+                    <form class="prompt-form" id="promptForm">
+                        <input type="text" id="promptInput" placeholder='e.g. "person", "car"' autocomplete="off">
+                        <button type="submit" class="btn btn-primary" id="segmentBtn">Segment</button>
+                    </form>
+                </div>
+
+                <div class="control-section">
+                    <h3>Results</h3>
+                    <ul class="results-list" id="resultsList"></ul>
+                    <p class="status-msg" id="statusMsg">Upload an image and enter a prompt to start</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-download" id="downloadBtn" disabled>
+                        <i class="fas fa-download"></i> Download PNG
+                    </button>
+                    <button class="btn btn-outline" id="resetBtn">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>&copy; RemoveBG — Local AI background removal powered by Meta SAM3 &amp; Apple MLX</p>
+    </footer>
+
+    <input type="file" id="fileInput" accept="image/*" hidden>
+    <script src="config.js" onerror=""></script>
+    <script src="app.js"></script>
+</body>
+</html>
